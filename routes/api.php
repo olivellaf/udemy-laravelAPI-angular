@@ -3,6 +3,9 @@
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Route;
 
+// Controllers
+use App\Http\Controllers\MovieController;
+
 /*
 |--------------------------------------------------------------------------
 | API Routes
@@ -17,3 +20,10 @@ use Illuminate\Support\Facades\Route;
 Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
+
+// index, show, store are convention methods
+Route::get('movies', [MovieController::class, 'index']);
+Route::get('movies/{id}', [MovieController::class, 'show']);
+Route::post('movies', [MovieController::class, 'store']);
+Route::put('movies/{id}', [MovieController::class, 'update']);
+Route::delete('movies/{id}', [MovieController::class, 'delete']);
